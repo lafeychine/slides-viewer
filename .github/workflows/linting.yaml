@@ -1,0 +1,29 @@
+name: Run linting
+
+on: [push, pull_request]
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+
+      - uses: snok/install-poetry@v1
+
+      - name: Install dependencies
+        if: steps.cached-poetry.outputs.cache-git != 'true'
+        run: poetry install --no-interaction --no-root
+
+      - name: Run autoflake
+        run: poetry run autoflake -rc .
+
+      - name: Run black
+        run: poetry run black --check .
+
+      - name: Run isort
+        run: poetry run isort --check .
+
+      - name: Run mypy
+        run: poetry run mypy .
