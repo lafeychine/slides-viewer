@@ -2,9 +2,7 @@ from __future__ import annotations
 
 from typing import NewType
 
-from PySide2.QtCore import QUrl
-
-from slides_viewer.playlist.Animation import Animation, AnimationIndex, Animations
+from slides_viewer.playlist.Animation import AnimationIndex
 from slides_viewer.playlist.Slide import Slide, SlideIndex, Slides
 
 PlaylistIndex = NewType("PlaylistIndex", int)

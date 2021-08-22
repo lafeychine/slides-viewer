@@ -73,7 +73,8 @@ class Player:
 
     def playPause(self) -> None:
         if len(self.playlistWidgets) == 0:
-            return error("There is nothing to play")
+            error("There is nothing to play")
+            return None
 
         videoWidget = self.playlistWidgets[self.playlistIndex]
 

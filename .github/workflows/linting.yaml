@@ -16,8 +16,8 @@ jobs:
         if: steps.cached-poetry.outputs.cache-git != 'true'
         run: poetry install --no-interaction --no-root
 
-      - name: Run autoflake
-        run: poetry run autoflake -rc .
+      - name: Run pyflakes
+        run: poetry run pyflakes .
 
       - name: Run black
         run: poetry run black --check .
